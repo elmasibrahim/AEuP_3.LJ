@@ -27,3 +27,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+
+###Eigene Sachen###
+output.xml
+output.json
+output.csv
