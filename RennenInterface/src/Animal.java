@@ -1,16 +1,15 @@
 import java.util.Random;
 
 public class Animal {
-    public String name;
+    protected String name;
+    protected int maxSpeed;
+    protected int minSpeed;
+    protected int stamina;
 
     Random random = new Random();
 
-    public int move(int maxSpeed, int minSpeed, int stamina) {
+    protected int move(int maxSpeed, int minSpeed, int stamina) {
         int randomSpeed = random.nextInt(maxSpeed - minSpeed + 1) + minSpeed;
         return randomSpeed * stamina;
-    }
-
-    public String makeNoise() {
-        return "Noise";
     }
 }
