@@ -1,6 +1,11 @@
 import java.util.Random;
 
-public class Animal {
+interface BaseInterface {
+    int move(int maxSpeed, int minSpeed, int stamina);
+    String makeNoise();
+}
+
+public class BaseClass implements BaseInterface{
     protected String name;
     protected int maxSpeed;
     protected int minSpeed;
@@ -8,8 +13,12 @@ public class Animal {
 
     Random random = new Random();
 
-    protected int move(int maxSpeed, int minSpeed, int stamina) {
+    public int move(int maxSpeed, int minSpeed, int stamina) {
         int randomSpeed = random.nextInt(maxSpeed - minSpeed + 1) + minSpeed;
         return randomSpeed * stamina;
+    }
+
+    public String makeNoise() {
+        return "Noise";
     }
 }

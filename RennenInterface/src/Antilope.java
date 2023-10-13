@@ -1,4 +1,4 @@
-public class Antilope extends Animal {
+public class Antilope extends BaseClass {
 
     public Antilope() {
         this.name = "Antilope" ;
