@@ -5,7 +5,7 @@ public class Main {
         BaseClass base;
         HashMap<BaseClass, Integer> racers = new HashMap<BaseClass, Integer>();
 
-        //Initialisierung der Tiere
+        //Initialisierung der Rennteilnehmer
         base = new Antilope();
         racers.put(base, 0);
         base = new Wolf();
@@ -24,34 +24,42 @@ public class Main {
 
         boolean finish = false;
         do {
-            for (BaseClass animals : racers.keySet()) {
+            for (BaseClass racer : racers.keySet()) {
                 int move = 0;
-                if (animals instanceof Antilope) {
-                    move = ((Antilope)animals).move();
-                } else if (animals instanceof Wolf) {
-                    move = ((Wolf)animals).move();
-                } else if (animals instanceof Lion) {
-                    move = ((Lion)animals).move();
-                } else if (animals instanceof Horse) {
-                    move = ((Horse)animals).move();
-                } else if (animals instanceof Aliens) {
-                    move = ((Aliens)animals).move();
-                } else if (animals instanceof Cars) {
-                    move = ((Cars)animals).move();
-                } else if (animals instanceof Human) {
-                    move = ((Human)animals).move();
-                } else if (animals instanceof Roboter) {
-                    move = ((Roboter)animals).move();
+                if (racer instanceof Antilope) {
+                    move = ((Antilope)racer).move();
+                } else if (racer instanceof Wolf) {
+                    move = ((Wolf)racer).move();
+                } else if (racer instanceof Lion) {
+                    move = ((Lion)racer).move();
+                } else if (racer instanceof Horse) {
+                    move = ((Horse)racer).move();
+                } else if (racer instanceof Aliens) {
+                    move = ((Aliens)racer).move();
+                } else if (racer instanceof Cars) {
+                    move = ((Cars)racer).move();
+                } else if (racer instanceof Human) {
+                    move = ((Human)racer).move();
+                } else if (racer instanceof Roboter) {
+                    move = ((Roboter)racer).move();
                 } else {
                     System.out.println("Fehler!");
                 }
-                int value = racers.get(animals) + move;
+                int value = racers.get(racer) + move;
                 if (value >= 10000) {
-                    System.out.println("Gewinner: " + animals.name);
+                    String name = "";
+                    if (racer instanceof Roboter) {
+                        name = ((Roboter) racer).typbezeichnung;
+                    } else if (racer instanceof Aliens) {
+                        name = ((Aliens) racer).planet;
+                    } else {
+                        name = racer.name;
+                    }
+                    System.out.println("Gewinner: " + name);
                     finish = true;
                     break;
                 }
-                racers.put(animals, value);
+                racers.put(racer, value);
             }
         } while (!finish);
     }
